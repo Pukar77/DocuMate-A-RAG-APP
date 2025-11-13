@@ -1,0 +1,7 @@
+langchain
+sentence-transformers
+langchain-text-splitters
+pypdf
+python-docx
+uvicorn
+python-multipart
