@@ -108,29 +108,22 @@ def rag_query(question: str, k: int = 3) -> str:
     )
     retrieved_chunks = results["documents"][0]
     context = "\n".join(retrieved_chunks)
-
-    # Strong prompt to prevent hallucination
     prompt = f"""
 You are an assistant that answers questions using ONLY the provided context. 
 Do NOT use your own knowledge or make assumptions.
 If the answer is not present in the context, respond: "This information is not present in the given file".
-
 Context:
 {context}
-
 Question:
 {question}
 Answer:
 """
-
     # Generate answer
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt
     )
-
     return response.text.strip()
-
 def translate_to_nepali(text:str) ->str:
     prompt=f"""
     Translate this response in nepali language
